@@ -21,6 +21,7 @@
 		26D7C94521A3E89200F5607F /* JXFakeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7C94421A3E89200F5607F /* JXFakeController.swift */; };
 		26D7C94821A4081B00F5607F /* JXHomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7C94721A4081B00F5607F /* JXHomeHeaderView.swift */; };
 		26D7C94A21A409FF00F5607F /* JXHomeTableViewHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D7C94921A409FF00F5607F /* JXHomeTableViewHeaderView.swift */; };
+		49AB3AEB21A4435D0099F588 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49AB3AEA21A4435D0099F588 /* Launch Screen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		26D7C94421A3E89200F5607F /* JXFakeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXFakeController.swift; sourceTree = "<group>"; };
 		26D7C94721A4081B00F5607F /* JXHomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXHomeHeaderView.swift; sourceTree = "<group>"; };
 		26D7C94921A409FF00F5607F /* JXHomeTableViewHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JXHomeTableViewHeaderView.swift; sourceTree = "<group>"; };
+		49AB3AEA21A4435D0099F588 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 			children = (
 				2611613321A2A54700E59B7B /* Assets.xcassets */,
 				2611613821A2A54700E59B7B /* Info.plist */,
+				49AB3AEA21A4435D0099F588 /* Launch Screen.storyboard */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49AB3AEB21A4435D0099F588 /* Launch Screen.storyboard in Resources */,
 				2611613421A2A54700E59B7B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,7 +474,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6F399U28WY;
 				INFOPLIST_FILE = Lee/Resource/Info.plist;
@@ -490,7 +493,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6F399U28WY;
 				INFOPLIST_FILE = Lee/Resource/Info.plist;
