@@ -13,6 +13,7 @@ class JXNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.interactivePopGestureRecognizer?.delegate   = nil
     }
     
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
