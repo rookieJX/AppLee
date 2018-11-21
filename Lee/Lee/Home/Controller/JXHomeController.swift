@@ -26,6 +26,11 @@ class JXHomeController: JXBaseViewController,UITableViewDelegate,UITableViewData
         config_home_tableView()
         
         config_home_tableView_header()
+        
+        let statusRect = UIApplication.shared.statusBarFrame
+        let navigaRect = self.navigationController?.navigationBar.frame
+        NSLog("状态栏：\(statusRect),导航栏：\(String(describing: navigaRect))")
+        
     }
     
     // MARK: - UI
@@ -38,7 +43,7 @@ class JXHomeController: JXBaseViewController,UITableViewDelegate,UITableViewData
     }
     
     func config_home_tableView_header() {
-        let tableViewHeaderView = JXHomeHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+        let tableViewHeaderView = JXHomeHeaderView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 400))
         self.tableView?.tableHeaderView = tableViewHeaderView
     }
 

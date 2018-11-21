@@ -23,5 +23,42 @@ extension UIButton {
         self.addTarget(target, action: action, for: controlEvents)
     }
     
+    func config_convert_title_bottom(buttonFrame: CGRect,title: String,titleFont: Float? = nil,imageName: String,target: Any? = nil,action: Selector? = nil) {
+        let font                       = titleFont == nil ? 15.0 : titleFont
+        self.frame                     = buttonFrame
+        self.titleLabel?.font          = UIFont.systemFont(ofSize: CGFloat(font!))
+        self.addTarget(target, action: action!, for: .touchUpInside)
+        self.setImage(UIImage.init(named: imageName), for: .normal)
+        self.showsTouchWhenHighlighted = false
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(UIColor.black, for: .normal)
+        
+        // 图片宽高
+        let imageW = self.imageView?.frame.size.width
+        let imageH = self.imageView?.frame.size.height
+        
+        print("图片宽度：\(imageW!),图片高度：\(imageH!)")
+        
+        // 标题的尺寸
+        let titleSize = stringSize(title: title, titleFont: font!)
+        print("标题宽度：\(titleSize.width),标题高度：\(titleSize.height)")
+        // 图片+标题总宽度
+        let totalW = imageW! + titleSize.width
+        let totalH = imageH! + titleSize.height
+        print("总宽度：\(self.frame.size),总高度：\(self.frame.height)")
+        // 设置按钮图片偏移
+        self.imageEdgeInsets  = UIEdgeInsets(top: -(totalH/2 - imageH!/2), left: totalW/2 - imageW!/2, bottom: (totalH/2 - imageH!/2), right: -(totalW/2 - imageW!/2))
+        // 设置按钮文字偏移
+        self.titleEdgeInsets  = UIEdgeInsets(top: (totalH/2 - titleSize.height/2), left: -(totalW/2 - imageW!/2), bottom: -(totalH/2 - titleSize.height/2), right: (totalW/2 - titleSize.width/2))
+        
+    }
+    
+    func stringSize(title: String,titleFont: Float) -> CGSize {
+        let font = UIFont.systemFont(ofSize: CGFloat(titleFont))
+        let attributes = [NSAttributedString.Key.font: font]
+        let size = CGSize(width: CGFloat(MAXFLOAT), height: CGFloat(MAXFLOAT))
+        let bounds = title.boundingRect(with: size, options: [.usesLineFragmentOrigin], attributes: attributes, context: nil)
+        return bounds.size
+    }
     
 }
