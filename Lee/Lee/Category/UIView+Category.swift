@@ -42,14 +42,16 @@ extension UIButton {
         // 标题的尺寸
         let titleSize = stringSize(title: title, titleFont: font!)
         print("标题宽度：\(titleSize.width),标题高度：\(titleSize.height)")
-        // 图片+标题总宽度
-        let totalW = imageW! + titleSize.width
-        let totalH = imageH! + titleSize.height
+
+        let totalW = (imageW! + titleSize.width) > self.frame.size.width ? imageW! + self.titleLabel!.intrinsicContentSize.width : imageW! + titleSize.width
+        let totalH = (imageH! + titleSize.height) > self.frame.size.height ? imageH! + self.titleLabel!.intrinsicContentSize.height : imageH! + titleSize.height;
         print("总宽度：\(self.frame.size),总高度：\(self.frame.height)")
+        print("计算总宽度：\(totalW),总高度：\(totalH)")
         // 设置按钮图片偏移
-        self.imageEdgeInsets  = UIEdgeInsets(top: -(totalH/2 - imageH!/2), left: totalW/2 - imageW!/2, bottom: (totalH/2 - imageH!/2), right: -(totalW/2 - imageW!/2))
+        self.imageEdgeInsets  = UIEdgeInsets(top: -titleSize.height, left: 0, bottom: 0, right: -(totalW/2 - imageW!/2))
         // 设置按钮文字偏移
-        self.titleEdgeInsets  = UIEdgeInsets(top: (totalH/2 - titleSize.height/2), left: -(totalW/2 - imageW!/2), bottom: -(totalH/2 - titleSize.height/2), right: (totalW/2 - titleSize.width/2))
+        self.titleEdgeInsets  = UIEdgeInsets(top: imageH!/2, left: -(totalW/2 - imageW!/2), bottom: -(totalH/2 - titleSize.height/2), right: (totalW/2 - titleSize.width/2))
+        print("图片尺寸：\(String(describing: self.imageView?.frame)) 文字尺寸：\(String(describing: self.titleLabel?.frame)) 总尺寸：\(self.frame)")
         
     }
     

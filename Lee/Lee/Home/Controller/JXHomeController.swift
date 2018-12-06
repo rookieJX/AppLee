@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Masonry
 
 class JXHomeController: JXBaseViewController,UITableViewDelegate,UITableViewDataSource {
     // MARK: - 属性

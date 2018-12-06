@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum HeaderButtonType : Int {
+    case HeaderTypeHistory = 1  // 查询历史价格
+    case HeaderTypeSave    = 2  // 省钱控
+    case HeaderTypeTicket  = 3  // 搜淘宝券
+    case HeaderTypeCheap   = 4  // 白菜价
+    case HeaderTypeGood    = 5  // 好价订阅
+}
+
 class JXHomeHeaderView: UIView {
 
     override init(frame: CGRect) {
@@ -52,22 +60,27 @@ class JXHomeHeaderView: UIView {
         headerSearchButton.setBackgroundImage(UIImage.init(named: "home_header_search"), for: .normal)
         self.addSubview(headerSearchButton)
         
-        // 创建图片
-        let button = UIButton.init(type: .custom)
-        button.backgroundColor  = UIColor.white
-        button.config_convert_title_bottom(buttonFrame: CGRect(x: 20, y: 20+50+20+55+20, width: 150, height: 100),
-                                           title: "历史价格",
-                                           titleFont: 14,
-                                           imageName: "home_header_add",
-                                           target: nil,
-                                           action: #selector(buttonClick))
-        self.addSubview(button)
+        // 创建按钮
+        let buttonW = self.frame.size.width / 5.0
+        print("界面宽度\(self.frame.size.width)，按钮宽度\(buttonW)")
+        let buttonH = 90.0
+        
+        let historyButton = private_create_button(title: "历史价格", imageName: "home_header_history", headerType: .HeaderTypeHistory, frame: CGRect(x: 20, y: 20+50+20+55+20, width: Double(buttonW), height: buttonH))
+        self.addSubview(historyButton)
         
         
     }
     
     @objc func buttonClick() {
         print("点击")
+    }
+    
+    // MARK: - Private Meth
+    func private_create_button(title: String,imageName: String,headerType: HeaderButtonType,frame: CGRect) -> UIButton {
+        let button = UIButton.init(type: .custom)
+        button.backgroundColor  = UIColor.red
+        button.config_convert_title_bottom(buttonFrame: frame, title: title, titleFont: 13, imageName: imageName, target: nil, action: #selector(buttonClick))
+        return button
     }
 
 }
