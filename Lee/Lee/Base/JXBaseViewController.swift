@@ -10,6 +10,12 @@ import UIKit
 
 class JXBaseViewController: UIViewController {
 
+    // MARK: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        event_show_navigation()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

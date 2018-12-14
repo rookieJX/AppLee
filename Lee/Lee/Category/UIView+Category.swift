@@ -37,21 +37,15 @@ extension UIButton {
         let imageW = self.imageView?.frame.size.width
         let imageH = self.imageView?.frame.size.height
         
-        print("图片宽度：\(imageW!),图片高度：\(imageH!)")
-        
         // 标题的尺寸
         let titleSize = stringSize(title: title, titleFont: font!)
-        print("标题宽度：\(titleSize.width),标题高度：\(titleSize.height)")
-
-        let totalW = (imageW! + titleSize.width) > self.frame.size.width ? imageW! + self.titleLabel!.intrinsicContentSize.width : imageW! + titleSize.width
-        let totalH = (imageH! + titleSize.height) > self.frame.size.height ? imageH! + self.titleLabel!.intrinsicContentSize.height : imageH! + titleSize.height;
-        print("总宽度：\(self.frame.size),总高度：\(self.frame.height)")
-        print("计算总宽度：\(totalW),总高度：\(totalH)")
+        
+        let totalW = self.frame.size.width
+        
         // 设置按钮图片偏移
-        self.imageEdgeInsets  = UIEdgeInsets(top: -titleSize.height, left: 0, bottom: 0, right: -(totalW/2 - imageW!/2))
+        self.imageEdgeInsets  = UIEdgeInsets(top: 0, left: (totalW - imageW!)/2, bottom: titleSize.height+5, right: 0)
         // 设置按钮文字偏移
-        self.titleEdgeInsets  = UIEdgeInsets(top: imageH!/2, left: -(totalW/2 - imageW!/2), bottom: -(totalH/2 - titleSize.height/2), right: (totalW/2 - titleSize.width/2))
-        print("图片尺寸：\(String(describing: self.imageView?.frame)) 文字尺寸：\(String(describing: self.titleLabel?.frame)) 总尺寸：\(self.frame)")
+        self.titleEdgeInsets  = UIEdgeInsets(top: imageH!+5, left: -imageW!, bottom: 0, right: 0)
         
     }
     
@@ -63,4 +57,13 @@ extension UIButton {
         return bounds.size
     }
     
+}
+
+
+extension UILabel {
+    func private_create_label(title: String? = nil,font: Float? = nil,titleColor: UIColor? = nil) {
+        self.text      = title!
+        self.textColor = titleColor!
+        self.font      = UIFont.systemFont(ofSize: (font == nil ? 15 : CGFloat(font!)))
+    }
 }
